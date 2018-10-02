@@ -1,0 +1,30 @@
+{
+  "name": "nodebookapi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "express": "4.14.0",
+    "babel-cli": "6.16.0",
+    "babel-core": "6.17.0",
+    "babel-loader": "6.2.5",
+    "babel-preset-latest": "6.16.0",
+    "babel-register": "6.16.3",
+    "open": "0.0.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node App.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bornehill/NodeBookApi.git"
+  },
+  "author": "Borne Hill",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bornehill/NodeBookApi/issues"
+  },
+  "homepage": "https://github.com/bornehill/NodeBookApi#readme"
+}
