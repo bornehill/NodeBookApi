@@ -1,17 +1,23 @@
 import express from 'express';
 import open from 'open';
 import mongoose from 'mongoose';
+import Book from './models/BookModel';
 
 const port = process.env.PORT || 3000;
 const app = express();
 
 let bookRouter = express.Router();
-
+let db = mongoose.connect('mongodb://localhost/bookAPI');
 bookRouter.route('/Books')
 .get((req, resp) => {
-    let responseJson = { hello: 'Hi API'};
+    Book.find((err, books) => {
+        if(err)
+        {
+            resp.status(500).send(err);
+        }
 
-    resp.json(responseJson);
+        resp.json(books);
+    });
 });
 
 app.use('/api', bookRouter);
