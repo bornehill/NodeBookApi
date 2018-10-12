@@ -1,13 +1,17 @@
 import express from 'express';
 import open from 'open';
 import mongoose from 'mongoose';
-import Book from './models/BookModel';
+import Book from './models/BookModel';  
 
 const port = process.env.PORT || 3000;
 const app = express();
 
-let bookRouter = express.Router();
-let db = mongoose.connect('mongodb://localhost/bookAPI');
+const bookRouter = express.Router();
+const db = mongoose.connect('mongodb://localhost/bookAPI', { useNewUrlParser: true }, function(error) {
+    if(error)
+        console.log(`conection mongo error: ${error}`);
+  });
+
 bookRouter.route('/Books')
 .get((req, resp) => {
     Book.find((err, books) => {
