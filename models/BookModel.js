@@ -11,5 +11,5 @@ const bookModel = new Schema({
 
 module.exports = mongoose.model('Book', bookModel)
 
-//db.Book.insertOne({_id: "54fb9534e04553b47ecaf59a", title: "War an Peace", genre: "Historical Fiction", author: "Lev Nikolayevich", read: false});
-//db.Book.insertOne({_id: "54fb9534e04553b47ecaf59b", title: "Origen", genre: "Historical Fiction", author: "Dan Brown", read: false});
+//db.Book.insertOne({title: "War an Peace", genre: "Historical Fiction", author: "Lev Nikolayevich", read: false});
+//db.Book.insertOne({title: "Origen", genre: "Historical Fiction", author: "Dan Brown", read: false});

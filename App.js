@@ -14,13 +14,26 @@ const db = mongoose.connect('mongodb://localhost/bookAPI', { useNewUrlParser: tr
 
 bookRouter.route('/Books')
 .get((req, resp) => {
-    Book.find((err, books) => {
+    const query = req.query;
+    Book.find(query, (err, books) => {
         if(err)
         {
             resp.status(500).send(err);
         }
 
         resp.json(books);
+    });
+});
+
+bookRouter.route('/Books/:bookId')
+.get((req, resp) => {
+    Book.findById(req.params.bookId, (err, book) => {
+        if(err)
+        {
+            resp.status(500).send(err);
+        }
+
+        resp.json(book);
     });
 });
 
