@@ -2,6 +2,7 @@ import express from 'express';
 import open from 'open';
 import mongoose from 'mongoose';  
 import bodyParser from 'body-parser';  
+import Book from './models/BookModel';
 
 const port = process.env.PORT || 3000;
 const app = express();
@@ -14,7 +15,7 @@ const db = mongoose.connect('mongodb://localhost/bookAPI', { useNewUrlParser: tr
         console.log(`conection mongo error: ${error}`);
   });
 
-const bookRouter = require('./routes/book-routes')();
+const bookRouter = require('./routes/book-routes')(Book);
 
 app.use('/api/books', bookRouter);
 

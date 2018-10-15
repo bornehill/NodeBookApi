@@ -1,27 +1,12 @@
 import express from 'express';
-import Book from '../models/BookModel';
 
-const routes = () => {
+const routes = (Book) => {
     const bookRouter = express.Router();
+    const bookController = require('../controllers/book-controller')(Book);
     
     bookRouter.route('/')
-    .post((req, resp) => {
-        const book = new Book(req.body);
-        book.save();
-        resp.status(201).send(book);
-    })
-    .get((req, resp) => {
-        const query = req.query;
-        Book.find(query, (err, books) => {
-            if(err)
-            {
-                resp.status(500).send(err);
-                return;
-            }
-    
-            resp.json(books);
-        });
-    });
+    .post(bookController.post)
+    .get(bookController.get);
     
     bookRouter.use('/:bookId', (req, resp, next) => {
         Book.findById(req.params.bookId, (err, book) => {
