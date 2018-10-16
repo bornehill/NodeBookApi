@@ -15,11 +15,11 @@ describe('Book Controller Tests', () => {
             let resp = {
                 _status: 0,
                 _book: {},
-                status: (state) => {
-                    resp._status = state;
+                status: function(state){
+                    this._status = state;
                 },
-                send: (object) => {
-                    resp._book = object; 
+                send: function(object){
+                    this._book = object; 
                 }
             }
             

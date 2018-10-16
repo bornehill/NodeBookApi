@@ -21,6 +21,12 @@ const bookController = (Book) =>{
                 resp.status(500).send(err);
                 return;
             }
+            
+            books = books.map(book => {
+                const bookLink = book.toJSON();
+                bookLink.links = { self: `http://${req.headers.host}/api/books/${book._id}`};
+                return bookLink;
+            });
     
             resp.json(books);
         });
